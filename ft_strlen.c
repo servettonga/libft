@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/27 17:35:23 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/27 20:16:44 by sehosaf          ###   ########.fr       */
+/*   Created: 2023/12/27 20:09:52 by sehosaf           #+#    #+#             */
+/*   Updated: 2023/12/27 21:25:26 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+/*
+	DESCRIPTION
+       The strlen() function calculates the length of the string pointed to by s,
+	   excluding the terminating null byte ('\0').
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stddef.h>
+	RETURN VALUE
+       The strlen() function returns the number of bytes in the string
+	   pointed to by s.
+*/
 
-// NUMBERS
-int		ft_atoi(const char *str);
+#include "libft.h"
 
-// STRINGS
-size_t	ft_strlen(const char *s);
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
 
-
-#endif
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}

@@ -6,9 +6,17 @@
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 14:25:19 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/27 17:41:36 by sehosaf          ###   ########.fr       */
+/*   Updated: 2023/12/27 17:46:20 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+	DESCRIPTION
+       The atoi() function converts the initial portion of the string
+	   pointed to by ptr to int.
+	RETURN VALUE
+       The converted value or 0 on error.
+*/
 
 int	ft_atoi(const char *str)
 {
