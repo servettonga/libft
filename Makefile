@@ -6,7 +6,7 @@
 #    By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 17:25:01 by sehosaf           #+#    #+#              #
-#    Updated: 2023/12/27 21:23:17 by sehosaf          ###   ########.fr        #
+#    Updated: 2023/12/27 22:14:40 by sehosaf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3
 AR = ar rc
 SRC = ft_strlen \
-	ft_atoi
+	ft_atoi \
+	ft_itoa
 
 SRCS = $(addsuffix .c, $(SRC))
 OBJS = $(addsuffix .o, $(SRC))
