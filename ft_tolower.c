@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/27 20:09:52 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/28 12:05:36 by sehosaf          ###   ########.fr       */
+/*   Created: 2023/12/28 11:59:46 by sehosaf           #+#    #+#             */
+/*   Updated: 2023/12/28 12:04:04 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 	DESCRIPTION
-       Calculates the length of the string pointed to by s,
-	   excluding the terminating null byte ('\0').
-
+		If c is an uppercase letter, ft_tolower() returns its lowercase
+		equivalent,	if a lowercase representation exists in the current
+		locale.	Otherwise, it returns c.
 	RETURN VALUE
-       Returns the number of bytes in the string pointed to by s.
+		The value returned is that of the converted letter,
+		or c if the conversion was not possible.
 */
 
-#include "libft.h"
-
-size_t	ft_strlen(const char *s)
+int	ft_tolower(int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	return (c);
 }

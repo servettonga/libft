@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/27 20:09:52 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/28 12:05:36 by sehosaf          ###   ########.fr       */
+/*   Created: 2023/12/28 12:06:05 by sehosaf           #+#    #+#             */
+/*   Updated: 2023/12/28 12:07:52 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 	DESCRIPTION
-       Calculates the length of the string pointed to by s,
-	   excluding the terminating null byte ('\0').
-
+		If c is an lowercase letter, ft_toupper() returns its uppercase
+		equivalent,	if an uppercase representation exists in the current
+		locale.	Otherwise, it returns c.
 	RETURN VALUE
-       Returns the number of bytes in the string pointed to by s.
+		The value returned is that of the converted letter,
+		or c if the conversion was not possible.
 */
 
-#include "libft.h"
-
-size_t	ft_strlen(const char *s)
+int	ft_toupper(int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (c >= 97 && c <= 122)
+		return (c - 32);
+	return (c);
 }

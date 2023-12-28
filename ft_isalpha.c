@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/27 20:09:52 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/28 12:05:36 by sehosaf          ###   ########.fr       */
+/*   Created: 2023/12/28 11:46:00 by sehosaf           #+#    #+#             */
+/*   Updated: 2023/12/28 12:04:18 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 	DESCRIPTION
-       Calculates the length of the string pointed to by s,
-	   excluding the terminating null byte ('\0').
-
+		Checks  for  an  alphabetic character; in the standard "C" locale,
+		it is equivalent to (ft_isupper(c) || ft_islower(c)).
 	RETURN VALUE
-       Returns the number of bytes in the string pointed to by s.
+		The values returned are nonzero if the character c falls into
+		the tested class, and zero if not.
 */
 
-#include "libft.h"
-
-size_t	ft_strlen(const char *s)
+int	ft_isalpha(int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }

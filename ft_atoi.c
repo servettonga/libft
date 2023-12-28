@@ -6,13 +6,13 @@
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 14:25:19 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/27 17:46:20 by sehosaf          ###   ########.fr       */
+/*   Updated: 2023/12/28 12:04:41 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 	DESCRIPTION
-       The atoi() function converts the initial portion of the string
+       The ft_atoi() function converts the initial portion of the string
 	   pointed to by ptr to int.
 	RETURN VALUE
        The converted value or 0 on error.

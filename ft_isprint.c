@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/27 20:09:52 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/28 12:05:36 by sehosaf          ###   ########.fr       */
+/*   Created: 2023/12/28 11:54:18 by sehosaf           #+#    #+#             */
+/*   Updated: 2023/12/28 11:54:54 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 	DESCRIPTION
-       Calculates the length of the string pointed to by s,
-	   excluding the terminating null byte ('\0').
-
+		Checks for any printable character including space.
 	RETURN VALUE
-       Returns the number of bytes in the string pointed to by s.
+		The values returned are nonzero if the character c falls into
+		the tested class, and zero if not.
 */
 
-#include "libft.h"
-
-size_t	ft_strlen(const char *s)
+int	ft_isprint(int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	return (c >= 32 && c <= 126);
 }
