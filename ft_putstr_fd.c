@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/27 17:35:23 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/28 11:26:51 by sehosaf          ###   ########.fr       */
+/*   Created: 2023/12/28 11:09:34 by sehosaf           #+#    #+#             */
+/*   Updated: 2023/12/28 11:11:23 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+/*
+	DESCRIPTION
+		Outputs the string ’s’ to the given file descriptor.
+	RETURN VALUE
+		None
+*/
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stddef.h>
-# include <limits.h>
+#include "libft.h"
 
-// FILE DESCRIPTORS
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
-
-// STRINGS
-size_t	ft_strlen(const char *s);
-
-// NUMBERS
-int		ft_atoi(const char *str);
-char	*ft_itoa(int n);
-
-#endif
+void	ft_putstr_fd(char *s, int fd)
+{
+	while (*s)
+		write(fd, s++, 1);
+}

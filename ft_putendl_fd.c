@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/27 17:35:23 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/28 11:26:51 by sehosaf          ###   ########.fr       */
+/*   Created: 2023/12/28 11:14:37 by sehosaf           #+#    #+#             */
+/*   Updated: 2023/12/28 11:16:18 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+/*
+	DESCRIPTION
+		Outputs the string ’s’ to the given file descriptor,
+		followed by a newline.
+	RETURN VALUE
+		None
+*/
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stddef.h>
-# include <limits.h>
+#include "libft.h"
 
-// FILE DESCRIPTORS
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
-
-// STRINGS
-size_t	ft_strlen(const char *s);
-
-// NUMBERS
-int		ft_atoi(const char *str);
-char	*ft_itoa(int n);
-
-#endif
+void	ft_putendl_fd(char *s, int fd)
+{
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
+}
