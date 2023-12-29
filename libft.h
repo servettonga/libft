@@ -6,7 +6,7 @@
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:35:23 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/28 12:08:48 by sehosaf          ###   ########.fr       */
+/*   Updated: 2023/12/29 23:21:14 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,16 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
-# include <limits.h>
+# include <stdint.h>
+
+// MEMORY
+void	*ft_memset(void *s, int c, size_t n);
+void	ft_bzero(void *s, size_t n);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n);
+void	*ft_memmove(void *dest, const void *src, size_t n);
+void	*ft_memchr(const void *s, int c, size_t n);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
 // CHARACTERS
 int		ft_isalnum(int c);
