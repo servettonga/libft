@@ -6,16 +6,16 @@
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 21:31:37 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/28 10:57:06 by sehosaf          ###   ########.fr       */
+/*   Updated: 2023/12/30 18:13:16 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 	DESCRIPTION
-		Allocates (with malloc(3)) and returns a string representing the integer
-		received as an argument. Negative numbers must be handled.
+		Allocates with ft_calloc() and returns a string representing the
+		integer	received as an argument. Negative numbers must be handled.
 	RETURN VALUE
-		The string representing the integer.  NULL if the allocation fails.
+		The string representing the integer. NULL if the allocation fails.
 */
 
 #include "libft.h"
@@ -44,7 +44,7 @@ static char	*ft_int_to_str(long n, int sign, size_t	len)
 {
 	char	*str;
 
-	str = (char *)malloc(sizeof(char) * (len + 1));
+	str = (char *)ft_calloc((len + 1), sizeof(char));
 	if (str == NULL)
 		return (NULL);
 	str[len--] = '\0';
