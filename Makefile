@@ -6,7 +6,7 @@
 #    By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 17:25:01 by sehosaf           #+#    #+#              #
-#    Updated: 2023/12/31 11:36:27 by sehosaf          ###   ########.fr        #
+#    Updated: 2023/12/31 15:07:14 by sehosaf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME	=	libft.a
 CC 		= 	clang
 FLAGS 	= 	-Wall -Wextra -Werror
 RM		=	rm -f
+AR		=	ar -rcs
 
 MAND	=	ft_calloc ft_memset ft_bzero ft_memcpy ft_memccpy ft_memmove ft_memchr ft_memcmp \
 			ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_isprint ft_toupper ft_tolower \
@@ -23,24 +24,33 @@ MAND	=	ft_calloc ft_memset ft_bzero ft_memcpy ft_memccpy ft_memmove ft_memchr ft
 			ft_substr ft_strjoin ft_strtrim ft_split ft_strmapi ft_striteri \
 			ft_atoi ft_itoa
 
+BONUS	=	ft_lstnew ft_lstadd_front ft_lstsize ft_lstlast ft_lstadd_back ft_lstdelone \
+			ft_lstclear ft_lstiter ft_lstmap
+
 SRCS	=	$(addsuffix .c, $(MAND))
 OBJS	=	$(addsuffix .o, $(MAND))
+BONUS_S =	$(addsuffix .c, $(BONUS))
+BONUS_O =	$(addsuffix .o, $(BONUS))
 
 .c.o:
-			$(CC) $(FLAGS) -c $< -o $@
+			@$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS)
-			ar -rcs $(NAME) $(OBJS)
-			ranlib $(NAME)
+			@$(AR) $(NAME) $(OBJS)
+			@ranlib $(NAME)
 
 all:		$(NAME)
 
+bonus:		$(OBJS) $(BONUS_O)
+			@$(AR) $(NAME) $(OBJS) $(BONUS_O)
+			@ranlib $(NAME)
+
 clean:
-			$(RM) $(OBJS)
+			@$(RM) *.o
 
 fclean: 	clean
-			$(RM) $(NAME)
+			@$(RM) $(NAME)
 
 re:			fclean all
 
-.PHONY: 	all clean fclean re
+.PHONY: 	all bonus clean fclean re
