@@ -21,10 +21,10 @@ ifeq ($(IN_DOCKER),TRUE)
 endif
 
 $(MANDATORY): %: mandatory_start
-	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L$(LIBFT_PATH) -lft && $(VALGRIND) ./a.out && rm -f a.out
+	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L$(LIBFT_PATH) -I$(LIBFT_PATH)/includes -lft && $(VALGRIND) ./a.out && rm -f a.out
 
 $(BONUS): %: bonus_start
-	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L$(LIBFT_PATH) -lft && $(VALGRIND) ./a.out && rm -f a.out
+	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L$(LIBFT_PATH) -I$(LIBFT_PATH)/includes -lft && $(VALGRIND) ./a.out && rm -f a.out
 
 $(VSOPEN): vs%:
 	@code $(TESTS_PATH)ft_$*_test.cpp
