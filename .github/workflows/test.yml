@@ -1,0 +1,21 @@
+name: libft_test
+
+on: [push]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        defaults:
+          run:
+            shell: bash
+
+        steps:
+          - uses: actions/checkout@v4
+            with:
+              submodules: recursive
+          - name: make
+            run: |
+                sudo apt-get update && sudo apt-get install make git clang valgrind -y
+                cd libftTester
+                make a
+                make fclean
