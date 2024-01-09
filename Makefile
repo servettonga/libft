@@ -6,7 +6,7 @@
 #    By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 17:25:01 by sehosaf           #+#    #+#              #
-#    Updated: 2023/12/31 20:40:41 by sehosaf          ###   ########.fr        #
+#    Updated: 2024/01/09 20:43:17 by sehosaf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ bonus:		$(OBJS) $(BONUS_O)
 			@ranlib $(NAME)
 
 clean:
-			@$(RM) *.o
+			@$(RM) $(OBJS) $(BONUS_O)
 
 fclean: 	clean
 			@$(RM) $(NAME)
