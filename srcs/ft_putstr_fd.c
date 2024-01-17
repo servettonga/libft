@@ -6,7 +6,7 @@
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:09:34 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/28 11:11:23 by sehosaf          ###   ########.fr       */
+/*   Updated: 2024/01/17 23:07:04 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	while (*s)
-		write(fd, s++, 1);
+	int	len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	write(fd, s, len);
 }
