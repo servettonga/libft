@@ -6,7 +6,7 @@
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:16:41 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/28 11:20:43 by sehosaf          ###   ########.fr       */
+/*   Updated: 2024/01/19 20:13:34 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,23 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
+	char	buffer[12];
 	long	num;
+	int		i;
 
 	num = n;
+	i = 11;
+	if (num == 0)
+		buffer[--i] = '0';
 	if (num < 0)
-	{
-		ft_putchar_fd('-', fd);
 		num *= -1;
-	}
-	if (num >= 10)
+	while (num > 0)
 	{
-		ft_putnbr_fd(num / 10, fd);
-		ft_putnbr_fd(num % 10, fd);
+		buffer[--i] = (num % 10) + '0';
+		num /= 10;
 	}
-	else
-		ft_putchar_fd(num + '0', fd);
+	if (n < 0)
+		buffer[--i] = '-';
+	buffer[11] = '\0';
+	write(fd, buffer + i, 11 - i);
 }
