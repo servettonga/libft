@@ -1,0 +1,4 @@
+[submodule "libftTester"]
+path = libftTester
+url = git@github.com:Tripouille/libftTester.git
+ignore = dirty

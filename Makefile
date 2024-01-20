@@ -6,14 +6,14 @@
 #    By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 17:25:01 by sehosaf           #+#    #+#              #
-#    Updated: 2024/01/09 20:43:17 by sehosaf          ###   ########.fr        #
+#    Updated: 2024/01/20 13:38:58 by sehosaf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
 
 CC 		= 	clang
-FLAGS 	= 	-Wall -Wextra -Werror -Iincludes
+FLAGS 	= 	-Wall -Wextra -Werror -Iinclude
 RM		=	rm -f
 AR		=	ar -rcs
 
@@ -27,9 +27,9 @@ MAND	=	ft_calloc ft_memset ft_bzero ft_memcpy ft_memccpy ft_memmove ft_memchr ft
 BONUS	=	ft_lstnew ft_lstadd_front ft_lstsize ft_lstlast ft_lstadd_back ft_lstdelone \
 			ft_lstclear ft_lstiter ft_lstmap
 
-SRCS	=	$(addprefix srcs/, $(addsuffix .c, $(MAND)))
+SRCS	=	$(addprefix src/, $(addsuffix .c, $(MAND)))
 OBJS	=	$(SRCS:.c=.o)
-BONUS_S =	$(addprefix srcs/, $(addsuffix .c, $(BONUS)))
+BONUS_S =	$(addprefix src/, $(addsuffix .c, $(BONUS)))
 BONUS_O =	$(BONUS_S:.c=.o)
 
 .c.o:
