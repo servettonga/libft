@@ -31,16 +31,19 @@ char	*ft_strrchr(const char *s, int c)
 {
 	size_t			s_len;
 	unsigned char	cc;
-	const char		*p;
+	char			*ptr;
 
 	cc = c;
 	s_len = ft_strlen(s);
-	p = s + s_len;
+	ptr = (char *)s + s_len;
 	if (cc == '\0')
-		return ((char *)p);
-	while (*p != cc && *p != *s)
-		p--;
-	if (*p == cc)
-		return ((char *)p);
-	return (NULL);
+		return (ptr++);
+	while (ptr >= s)
+	{
+		if (*ptr == cc)
+			return (ptr);
+		ptr--;
+	}
+	ptr = NULL;
+	return (ptr);
 }

@@ -12,8 +12,8 @@
 
 NAME	=	libft.a
 
-CC 		= 	clang
-FLAGS 	= 	-Wall -Wextra -Werror -Iinclude
+CC 		= 	cc
+FLAGS 	= 	-Wall -Wextra -Werror
 RM		=	rm -f
 AR		=	ar -rcs
 
@@ -27,30 +27,28 @@ MAND	=	ft_calloc ft_memset ft_bzero ft_memcpy ft_memccpy ft_memmove ft_memchr ft
 BONUS	=	ft_lstnew ft_lstadd_front ft_lstsize ft_lstlast ft_lstadd_back ft_lstdelone \
 			ft_lstclear ft_lstiter ft_lstmap
 
-SRCS	=	$(addprefix src/, $(addsuffix .c, $(MAND)))
+SRCS	=	$(MAND:=.c)
 OBJS	=	$(SRCS:.c=.o)
-BONUS_S =	$(addprefix src/, $(addsuffix .c, $(BONUS)))
+BONUS_S =	$(BONUS:=.c)
 BONUS_O =	$(BONUS_S:.c=.o)
 
 .c.o:
-			@$(CC) $(FLAGS) -c $< -o $@
+			$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS)
-			@$(AR) $(NAME) $(OBJS)
-			@ranlib $(NAME)
+			$(AR) $(NAME) $(OBJS)
 
 all:		$(NAME)
 
-bonus:		$(OBJS) $(BONUS_O)
-			@$(AR) $(NAME) $(OBJS) $(BONUS_O)
-			@ranlib $(NAME)
-
 clean:
-			@$(RM) $(OBJS) $(BONUS_O)
+			$(RM) $(OBJS) $(BONUS_O)
 
 fclean: 	clean
-			@$(RM) $(NAME)
+			$(RM) $(NAME)
 
 re:			fclean all
 
-.PHONY: 	all bonus clean fclean re
+bonus:		$(OBJS) $(BONUS_O)
+			$(AR) $(NAME) $(OBJS) $(BONUS_O)
+
+.PHONY: 	all clean fclean re bonus

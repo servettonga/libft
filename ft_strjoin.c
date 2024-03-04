@@ -30,7 +30,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	result = (char *)ft_calloc((total), sizeof(char));
 	if (!result)
 		return (NULL);
-	result[0] = '\0';
 	ft_strlcat(result, s1, total);
 	ft_strlcat(result, s2, total);
 	return (result);
