@@ -6,7 +6,7 @@
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 21:39:50 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/29 23:08:38 by sehosaf          ###   ########.fr       */
+/*   Updated: 2025/01/09 23:20:39 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,16 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char	*d;
-	unsigned char	*s;
+	unsigned char		*d;
+	const unsigned char	*s;
 
-	if ((!dest || !src) || n >= SIZE_MAX)
+	if (!dest && !src)
 		return (NULL);
 	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	if (dest < src)
-		while (n--)
-			*d++ = *s++;
-	else if (dest > src && dest < src + n)
-		while (n--)
-			d[n] = s[n];
+	s = (const unsigned char *)src;
+	if (d < s)
+		return (ft_memcpy(dest, src, n));
+	while (n--)
+		d[n] = s[n];
 	return (dest);
 }

@@ -6,7 +6,7 @@
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 23:02:01 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/30 23:46:56 by sehosaf          ###   ########.fr       */
+/*   Updated: 2025/01/09 23:54:15 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,20 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*result;
 	size_t	start;
 	size_t	end;
-	size_t	len;
+	char	*result;
 
 	if (!s1)
 		return (NULL);
-	if (!set)
+	if (!set || !*set)
 		return (ft_strdup(s1));
-	len = ft_strlen(s1);
 	start = 0;
 	while (s1[start] && ft_strchr(set, s1[start]))
 		start++;
-	end = len;
-	while (end >= start && ft_strrchr(set, s1[end - 1]))
+	end = ft_strlen(s1);
+	while (end > start && ft_strchr(set, s1[end - 1]))
 		end--;
-	len = end - start;
-	result = (char *)ft_calloc((len + 1), sizeof(char));
-	if (!result)
-		return (NULL);
-	ft_strlcpy(result, s1 + start, len + 1);
+	result = ft_substr(s1, start, end - start);
 	return (result);
 }

@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 18:57:57 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/29 19:02:13 by sehosaf          ###   ########.fr       */
+/*   Created: 2023/12/31 13:26:00 by sehosaf           #+#    #+#             */
+/*   Updated: 2025/01/10 00:22:01 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 	DESCRIPTION
-       The ft_memset() function fills the first n bytes of the memory area
-	   pointed to by s with the constant byte c.
-
+		Iterates the list ’lst’ and applies the function ’f’ to the content
+		of each element.
 	RETURN VALUE
-       The ft_memset() function returns a pointer to the memory area s.
+		None
 */
 
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	unsigned char	*p;
-
-	p = (unsigned char *)s;
-	while (n--)
-		*p++ = (unsigned char)c;
-	return (s);
+	if (!lst || !f)
+		return ;
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }

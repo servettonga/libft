@@ -6,7 +6,7 @@
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 23:20:43 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/29 23:35:07 by sehosaf          ###   ########.fr       */
+/*   Updated: 2025/01/09 23:23:32 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,15 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	const unsigned char	*p1;
 	const unsigned char	*p2;
-	size_t				i;
 
 	if (n == 0)
 		return (0);
 	p1 = (const unsigned char *)s1;
 	p2 = (const unsigned char *)s2;
-	i = 0;
-	while (i < n - 1 && p1[i] == p2[i])
-		i++;
-	return (p1[i] - p2[i]);
+	while (--n && *p1 == *p2)
+	{
+		p1++;
+		p2++;
+	}
+	return (*p1 - *p2);
 }

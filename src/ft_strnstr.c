@@ -6,7 +6,7 @@
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 15:29:14 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/30 17:14:51 by sehosaf          ###   ########.fr       */
+/*   Updated: 2025/01/09 23:53:32 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,17 @@
 
 char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	size_t	s1_len;
-	size_t	s2_len;
+	size_t	l_len;
 
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	if (s2_len == 0)
+	if (!*s2)
 		return ((char *)s1);
-	if (s1_len < s2_len || n == 0)
-		return (NULL);
-	if (s2_len == 1)
-		return ((char *)ft_memchr(s1, *s2, n));
-	while (n-- >= s2_len)
+	l_len = ft_strlen(s2);
+	while (*s1 && n >= l_len)
 	{
-		if (ft_memcmp(s1, s2, s2_len) == 0)
+		if (!ft_strncmp(s1, s2, l_len))
 			return ((char *)s1);
 		s1++;
+		n--;
 	}
 	return (NULL);
 }

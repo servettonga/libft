@@ -6,7 +6,7 @@
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 21:31:37 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/30 18:13:16 by sehosaf          ###   ########.fr       */
+/*   Updated: 2025/01/10 00:17:36 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@
 
 static size_t	ft_int_len(long n)
 {
-	int	len;
+	size_t	len;
 
-	len = 0;
 	if (n == 0)
 		return (1);
+	len = 0;
 	if (n < 0)
 	{
 		len++;
 		n = -n;
 	}
-	while (n > 0)
+	while (n)
 	{
 		n /= 10;
 		len++;
@@ -40,38 +40,35 @@ static size_t	ft_int_len(long n)
 	return (len);
 }
 
-static char	*ft_int_to_str(long n, int sign, size_t	len)
+static void	ft_int_to_str(char *str, long n, size_t len)
 {
-	char	*str;
-
-	str = (char *)ft_calloc((len + 1), sizeof(char));
-	if (str == NULL)
-		return (NULL);
-	str[len--] = '\0';
-	while (len)
+	str[len] = '\0';
+	if (n == 0)
 	{
-		str[len] = (n % 10) + '0';
-		n /= 10;
-		len--;
+		str[0] = '0';
+		return ;
 	}
-	if (sign)
+	if (n < 0)
+	{
 		str[0] = '-';
-	else
-		str[0] = (n % 10) + '0';
-	return (str);
+		n = -n;
+	}
+	while (n)
+	{
+		str[--len] = (n % 10) + '0';
+		n /= 10;
+	}
 }
 
 char	*ft_itoa(int n)
 {
 	char	*str;
-	long	num;
 	size_t	len;
 
-	num = n;
-	len = ft_int_len(num);
-	if (num < 0)
-		str = ft_int_to_str(-num, 1, len);
-	else
-		str = ft_int_to_str(num, 0, len);
+	len = ft_int_len(n);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	ft_int_to_str(str, (long)n, len);
 	return (str);
 }

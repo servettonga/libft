@@ -6,7 +6,7 @@
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 23:48:08 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/31 00:04:02 by sehosaf          ###   ########.fr       */
+/*   Updated: 2025/01/10 00:25:31 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,64 +26,73 @@
 static int	count_words(char const *s, char c)
 {
 	int	count;
+	int	in_word;
 
 	count = 0;
+	in_word = 0;
 	while (*s)
 	{
-		while (*s == c)
-			s++;
-		if (*s != '\0')
+		if (*s == c)
+			in_word = 0;
+		else if (!in_word)
+		{
+			in_word = 1;
 			count++;
-		while (*s && *s != c)
-			s++;
+		}
+		s++;
 	}
 	return (count);
 }
 
-static char	**free_all(char **result, int k)
+static char	**free_all(char **arr, int size)
 {
-	while (k > 0)
-		free(result[--k]);
-	free(result);
+	while (size--)
+		free(arr[size]);
+	free(arr);
 	return (NULL);
 }
 
-static char	**fill_words(char **result, char const *s, char c)
+static size_t	word_len(char const *s, char c)
 {
-	int	i;
-	int	j;
-	int	k;
+	size_t	len;
 
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	return (len);
+}
+
+static char	**split_words(char const *s, char c, int words)
+{
+	char	**result;
+	int		i;
+	size_t	len;
+
+	result = (char **)malloc(sizeof(char *) * (words + 1));
+	if (!result)
+		return (NULL);
 	i = 0;
-	j = 0;
-	k = 0;
-	while (s[i])
+	while (*s)
 	{
-		while (s[i] == c)
-			i++;
-		j = i;
-		while (s[i] && s[i] != c)
-			i++;
-		if (i > j)
+		while (*s == c)
+			s++;
+		if (*s)
 		{
-			result[k] = ft_substr(s, j, i - j);
-			if (!result[k])
-				return (free_all(result, k));
-			k++;
+			len = word_len(s, c);
+			result[i] = ft_substr(s, 0, len);
+			if (!result[i])
+				return (free_all(result, i));
+			s += len;
+			i++;
 		}
 	}
-	result[k] = NULL;
+	result[i] = NULL;
 	return (result);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**result;
-
 	if (!s)
 		return (NULL);
-	result = (char **)ft_calloc((count_words(s, c) + 1), sizeof(char *));
-	if (!result)
-		return (NULL);
-	return (fill_words(result, s, c));
+	return (split_words(s, c, count_words(s, c)));
 }

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 11:14:37 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/28 11:16:18 by sehosaf          ###   ########.fr       */
+/*   Created: 2023/12/28 11:06:49 by sehosaf           #+#    #+#             */
+/*   Updated: 2025/01/10 00:18:47 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 	DESCRIPTION
-		Outputs the string ’s’ to the given file descriptor,
-		followed by a newline.
+		Outputs the character ’c’ to the given file descriptor.
 	RETURN VALUE
 		None
 */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
+	if (fd < 0)
+		return ;
+	write(fd, &c, 1);
 }

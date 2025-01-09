@@ -6,7 +6,7 @@
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 19:24:08 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/29 21:37:20 by sehosaf          ###   ########.fr       */
+/*   Updated: 2025/01/09 23:24:20 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,18 @@
 
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	unsigned char	*d;
-	unsigned char	*s;
+	unsigned char		*d;
+	const unsigned char	*s;
+	unsigned char		chr;
 
 	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	if (!n)
-		return (NULL);
+	s = (const unsigned char *)src;
+	chr = (unsigned char)c;
 	while (n--)
 	{
-		*d = *s;
-		if (*s == (unsigned char)c)
-			return (d + 1);
-		d++;
-		s++;
+		*d++ = *s;
+		if (*s++ == chr)
+			return (d);
 	}
 	return (NULL);
 }

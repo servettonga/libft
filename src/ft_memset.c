@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 11:09:34 by sehosaf           #+#    #+#             */
-/*   Updated: 2024/01/17 23:07:04 by sehosaf          ###   ########.fr       */
+/*   Created: 2023/12/29 18:57:57 by sehosaf           #+#    #+#             */
+/*   Updated: 2025/01/09 23:18:21 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 	DESCRIPTION
-		Outputs the string ’s’ to the given file descriptor.
+       The ft_memset() function fills the first n bytes of the memory area
+	   pointed to by s with the constant byte c.
+
 	RETURN VALUE
-		None
+       The ft_memset() function returns a pointer to the memory area s.
 */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	int	len;
+	unsigned char	*p;
 
-	len = 0;
-	while (s[len])
-		len++;
-	write(fd, s, len);
+	if (!s)
+		return (NULL);
+	p = (unsigned char *)s;
+	while (n--)
+		*p++ = (unsigned char)c;
+	return (s);
 }

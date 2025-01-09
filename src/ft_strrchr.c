@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/30 14:14:10 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/30 17:24:18 by sehosaf          ###   ########.fr       */
+/*   Created: 2023/12/30 14:38:21 by sehosaf           #+#    #+#             */
+/*   Updated: 2025/01/09 23:37:04 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,18 @@
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t			s_len;
-	unsigned char	cc;
-	const char		*p;
+	const char	*last;
 
-	cc = c;
-	s_len = ft_strlen(s);
-	p = s;
-	if (cc == '\0')
-		return ((char *)p + s_len);
-	while (*p && *p != cc)
-		p++;
-	if (*p == cc)
-		return ((char *)p);
-	return (NULL);
+	last = NULL;
+	while (*s != '\0')
+	{
+		if (*s == (char)c)
+			last = s;
+		s++;
+	}
+	if (*s == (char)c)
+		return ((char *)s);
+	return ((char *)last);
 }

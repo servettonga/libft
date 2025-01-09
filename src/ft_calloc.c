@@ -6,7 +6,7 @@
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 17:32:21 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/30 18:05:38 by sehosaf          ###   ########.fr       */
+/*   Updated: 2025/01/09 23:28:44 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,14 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
+	size_t	total;
 
-	if (size <= 0 || count <= 0)
-	{
-		size = 1;
-		count = 1;
-	}
-	if (count > SIZE_MAX / size)
+	if (count > 0 && size > SIZE_MAX / count)
 		return (NULL);
-	ptr = malloc(count * size);
+	total = count * size;
+	ptr = malloc(total);
 	if (!ptr)
 		return (NULL);
-	ft_bzero(ptr, count * size);
+	ft_bzero(ptr, total);
 	return (ptr);
 }

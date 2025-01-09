@@ -6,7 +6,7 @@
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 17:17:42 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/30 18:10:27 by sehosaf          ###   ########.fr       */
+/*   Updated: 2025/01/10 00:05:02 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@ char	*ft_strdup(const char *s)
 	if (!s)
 		return (NULL);
 	len = ft_strlen(s);
-	dup = (char *)ft_calloc((len + 1), sizeof(char));
+	dup = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dup)
 		return (NULL);
-	ft_memcpy(dup, s, len);
-	dup[len] = '\0';
+	ft_strlcpy(dup, s, len + 1);
 	return (dup);
 }

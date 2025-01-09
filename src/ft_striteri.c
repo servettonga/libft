@@ -1,42 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 11:16:41 by sehosaf           #+#    #+#             */
-/*   Updated: 2024/01/21 22:19:41 by sehosaf          ###   ########.fr       */
+/*   Created: 2023/12/31 11:29:31 by sehosaf           #+#    #+#             */
+/*   Updated: 2025/01/10 00:17:54 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-	DESCRIPTION
-		Outputs the integer ’n’ to the given file descriptor.
-	RETURN VALUE
-		None
+	DESCRIPTION :
+		The function ft_striteri applies the given function f to each
+		character in the given string s.
+
+	RETURN VALUE :
+		None.
 */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	char	buffer[11];
-	long	num;
 	int		i;
 
-	num = n;
-	i = 11;
-	if (num == 0)
-		buffer[--i] = '0';
-	if (num < 0)
-		num *= -1;
-	while (num > 0)
-	{
-		buffer[--i] = (num % 10) + '0';
-		num /= 10;
-	}
-	if (n < 0)
-		buffer[--i] = '-';
-	write(fd, buffer + i, 11 - i);
+	if (!s || !f)
+		return ;
+	i = -1;
+	while (s[++i])
+		f(i, &s[i]);
 }

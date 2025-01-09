@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/31 13:26:00 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/31 15:10:20 by sehosaf          ###   ########.fr       */
+/*   Created: 2023/12/28 11:14:37 by sehosaf           #+#    #+#             */
+/*   Updated: 2025/01/10 00:18:43 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 	DESCRIPTION
-		Iterates the list ’lst’ and applies the function ’f’ to the content
-		of each element.
+		Outputs the string ’s’ to the given file descriptor,
+		followed by a newline.
 	RETURN VALUE
 		None
 */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_putendl_fd(char *s, int fd)
 {
-	if (lst && f)
-	{
-		while (lst)
-		{
-			f(lst->content);
-			lst = lst->next;
-		}
-	}
+	if (!s || fd < 0)
+		return ;
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

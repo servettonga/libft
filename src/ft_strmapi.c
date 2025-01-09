@@ -6,7 +6,7 @@
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 00:04:24 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/31 11:13:36 by sehosaf          ###   ########.fr       */
+/*   Updated: 2025/01/09 23:41:56 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*new_str;
 	int		i;
 
+	if (!s || !f)
+		return (NULL);
 	new_str = (char *)ft_calloc(ft_strlen(s) + 1, sizeof(char));
 	if (!(new_str))
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: sehosaf <sehosaf@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 22:32:31 by sehosaf           #+#    #+#             */
-/*   Updated: 2023/12/30 23:07:07 by sehosaf          ###   ########.fr       */
+/*   Updated: 2025/01/09 23:46:24 by sehosaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,18 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*result;
-	size_t	total;
+	size_t	len1;
+	size_t	len2;
 
-	total = ft_strlen(s1) + ft_strlen(s2) + 1;
-	result = (char *)ft_calloc((total), sizeof(char));
+	if (!s1 || !s2)
+		return (NULL);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	result = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
 	if (!result)
 		return (NULL);
-	ft_strlcat(result, s1, total);
-	ft_strlcat(result, s2, total);
+	ft_memcpy(result, s1, len1);
+	ft_memcpy(result + len1, s2, len2);
+	result[len1 + len2] = '\0';
 	return (result);
 }
